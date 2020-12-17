@@ -63,7 +63,6 @@ export default {
   mounted() {
     setTimeout(() => {
       this.makeCanvas()
-      this.isReady = true
     }, 4000)
   },
 
@@ -78,6 +77,9 @@ export default {
         this.isCanvas = true
         // put the canvas
         document.querySelector('#canvasContainer').appendChild(generatedCanvas)
+
+        // show the ready dialog
+        this.isReady = true
       } catch (error) {
         // console.log(error)
         alert('Oops! Something went wrong!')
