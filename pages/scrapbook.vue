@@ -132,9 +132,9 @@ export default {
 .ready-dialog {
   position: absolute;
   top: 30%;
-  left: 30px;
-  right: 30px;
-  width: 1140px;
+  left: 5%;
+  right: 5%;
+  width: 90%;
   padding: 20px;
   text-align: center;
   background: white;
