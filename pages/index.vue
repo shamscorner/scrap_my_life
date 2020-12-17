@@ -60,7 +60,7 @@ export default {
     ...mapActions(['updateImages']),
 
     uploadImageSuccess(formData, index, fileList) {
-      console.log('data', formData, index, fileList)
+      // console.log('data', formData, index, fileList)
 
       // image available or not
       this.isImageAvailable = fileList.length !== 0
@@ -75,7 +75,7 @@ export default {
     },
 
     beforeRemove(index, done, fileList) {
-      console.log('index', index, fileList)
+      // console.log('index', index, fileList)
       const r = confirm('remove image')
       if (r === true) {
         done()
@@ -84,7 +84,7 @@ export default {
     },
 
     editImage(formData, index, fileList) {
-      console.log('edit data', formData, index, fileList)
+      // console.log('edit data', formData, index, fileList)
     },
   },
 }

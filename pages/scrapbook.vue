@@ -79,7 +79,8 @@ export default {
         // put the canvas
         document.querySelector('#canvasContainer').appendChild(generatedCanvas)
       } catch (error) {
-        console.log(error)
+        // console.log(error)
+        alert('Oops! Something went wrong!')
       }
     },
 
