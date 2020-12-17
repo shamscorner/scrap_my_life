@@ -21,9 +21,21 @@
     </div>
     <p class="text-sm">You can upload maximum three images for now</p>
 
-    <button class="btn-submit" style="margin-left: auto; margin-right: auto">
+    <nuxt-link
+      v-if="isImageAvailable"
+      to="/captions/edit"
+      class="btn-submit"
+      style="
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 100px;
+        text-decoration: none;
+      "
+      no-prefetch
+    >
       Next
-    </button>
+    </nuxt-link>
   </div>
 </template>
 
@@ -38,11 +50,20 @@ export default {
     VueUploadMultipleImage,
   },
 
+  data() {
+    return {
+      isImageAvailable: false,
+    }
+  },
+
   methods: {
     ...mapActions(['updateImages']),
 
     uploadImageSuccess(formData, index, fileList) {
       console.log('data', formData, index, fileList)
+
+      // image available or not
+      this.isImageAvailable = fileList.length !== 0
 
       // update images to store
       this.$store.dispatch('updateImages', fileList)
