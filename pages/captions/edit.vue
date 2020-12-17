@@ -1,19 +1,14 @@
 <template>
   <div>
     <h1 class="main-title">Scrap My Life</h1>
-
-    <form action="" class="edit-caption-form" @submit.prevent="submit">
-      <div class="wrapper">
-        <img src="~/assets/images/image1.jpg" alt="" />
-        <input type="text" placeholder="Give this image a meaning..." />
-      </div>
-      <div class="wrapper">
-        <img src="~/assets/images/image2.jpg" alt="" />
-        <input type="text" placeholder="Give this image a meaning..." />
-      </div>
-      <div class="wrapper">
-        <img src="~/assets/images/image3.jpg" alt="" />
-        <input type="text" placeholder="Give this image a meaning..." />
+    <form class="edit-caption-form" @submit.prevent="submit">
+      <div v-for="(image, index) in images" :key="index" class="wrapper">
+        <img :src="image.path" :alt="image.name" />
+        <input
+          type="text"
+          placeholder="Give this image a meaning..."
+          name="captions[]"
+        />
       </div>
       <div class="wrapper">
         <button class="btn-submit">Create</button>
@@ -23,12 +18,38 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'EditCaptions',
 
+  computed: {
+    ...mapState(['images']),
+  },
+
   methods: {
+    ...mapActions(['updateImages']),
+
     submit() {
-      console.log('submitting...')
+      // get the captions
+      const captions = []
+      const input = document.getElementsByName('captions[]')
+      for (let i = 0; i < input.length; i++) {
+        captions.push(input[i].value.trim())
+      }
+
+      // update the images in store
+      const images = []
+      this.images.forEach((image, index) => {
+        images.push({
+          ...image,
+          caption: captions[index],
+        })
+      })
+      this.$store.dispatch('updateImages', images)
+
+      // redirect
+      this.$router.push({ name: 'scrapbook' })
     },
   },
 }
