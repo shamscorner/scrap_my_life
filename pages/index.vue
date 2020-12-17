@@ -24,7 +24,7 @@
     <nuxt-link
       v-if="isImageAvailable"
       to="/captions/edit"
-      class="btn-submit"
+      class="btn btn-submit"
       style="
         margin-left: auto;
         margin-right: auto;

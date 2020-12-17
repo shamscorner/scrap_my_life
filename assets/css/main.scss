@@ -15,8 +15,7 @@ body {
 }
 
 #scrapbook {
-  position: relative;
-  min-width: 1280px;
+  min-width: 1200px;
   background-image: url('../images/pattern5.jpg');
 }
 
@@ -56,17 +55,34 @@ p {
   text-align: center;
 }
 
-.btn-submit {
+.btn {
   display: block;
   padding: 10px 15px;
-  background: #42b983;
   border: none;
   color: white;
   font-size: 18px;
   min-width: 100px;
+}
+
+.btn-submit {
+  background: #42b983;
 
   &:hover {
     background: #30a16e;
+  }
+}
+.btn-close {
+  background: #6d6d6d;
+
+  &:hover {
+    background: #111111;
+  }
+}
+.btn-action {
+  background: rgb(206, 111, 3);
+
+  &:hover {
+    background: rgb(160, 85, 0);
   }
 }
 
@@ -142,7 +158,7 @@ header {
   grid-row: header;
   padding: 2rem;
   // box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  // z-index: 1;
   text-align: center;
   background-color: aliceBlue;
   border: 1px solid rgba(229, 231, 235);

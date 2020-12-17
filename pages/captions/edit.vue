@@ -11,7 +11,7 @@
         />
       </div>
       <div class="wrapper">
-        <button class="btn-submit">Create</button>
+        <button class="btn btn-submit">Create</button>
       </div>
     </form>
   </div>
