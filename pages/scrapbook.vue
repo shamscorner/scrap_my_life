@@ -25,7 +25,7 @@
     </div>
     <div v-if="!isCanvas" class="grid">
       <header>
-        <h1>I Love My Awesome + Cute Cat</h1>
+        <h1>{{ name ? name : 'Your Scrape Life in a Book' }}</h1>
       </header>
 
       <template v-for="(image, index) in images">
@@ -57,7 +57,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['images']),
+    ...mapState(['name', 'images']),
   },
 
   mounted() {

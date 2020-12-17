@@ -2,6 +2,20 @@
   <div>
     <h1 class="main-title">Scrap My Life</h1>
     <form class="edit-caption-form" @submit.prevent="submit">
+      <div class="wrapper">
+        <p
+          class="text-sm"
+          style="margin-bottom: 0px; padding-bottom: 0px; font-size: 22px"
+        >
+          Enter a name here
+        </p>
+        <input
+          v-model="scrapbookName"
+          type="text"
+          placeholder="Enter a scrapbook name"
+          style="width: 300px"
+        />
+      </div>
       <div v-for="(image, index) in images" :key="index" class="wrapper">
         <img :src="image.path" :alt="image.name" />
         <input
@@ -22,6 +36,12 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'EditCaptions',
+
+  data() {
+    return {
+      scrapbookName: '',
+    }
+  },
 
   computed: {
     ...mapState(['images']),
@@ -47,6 +67,9 @@ export default {
         })
       })
       this.$store.dispatch('updateImages', images)
+
+      // update the scrapbook name
+      this.$store.dispatch('updateName', this.scrapbookName)
 
       // redirect
       this.$router.push({ name: 'scrapbook' })
