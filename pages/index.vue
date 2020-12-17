@@ -66,11 +66,6 @@ export default {
 </script>
 
 <style>
-.main-title {
-  font-size: 52px;
-  text-align: center;
-  color: rgb(236, 72, 153);
-}
 #my-strictly-unique-vue-upload-multiple-image {
   font-family: 'Schoolbell', cursive;
   -webkit-font-smoothing: antialiased;
