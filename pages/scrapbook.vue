@@ -1,48 +1,53 @@
 <template>
-  <div id="scrapbook" :style="`background-image: url(${backgroundImageUrl})`">
-    <div v-if="isReady" class="dialog">
-      <div class="ready-dialog">
-        <h1 style="margin-bottom: 20px">Your scrapbook is ready :)</h1>
+  <div>
+    <div id="scrapbook" :style="`background-image: url(${backgroundImageUrl})`">
+      <div v-if="isReady">
+        <div class="ready-dialog">
+          <h1 style="margin-bottom: 20px">Your scrapbook is ready :)</h1>
 
-        <button
-          class="btn btn-close"
-          style="display: inline-block"
-          @click="isReady = false"
-        >
-          Close
-        </button>
-        <button
-          class="btn btn-action"
-          style="display: inline-block"
-          @click="makeAnotherOne()"
-        >
-          Make another one
-        </button>
-        <button
-          class="btn btn-submit"
-          style="display: inline-block"
-          @click="downloadCanvas"
-        >
-          Download
-        </button>
+          <button
+            class="btn btn-close"
+            style="display: inline-block"
+            @click="isReady = false"
+          >
+            Close
+          </button>
+          <button
+            class="btn btn-action"
+            style="display: inline-block"
+            @click="makeAnotherOne()"
+          >
+            Make another one
+          </button>
+          <button
+            class="btn btn-submit"
+            style="display: inline-block"
+            @click="downloadCanvas"
+          >
+            Download
+          </button>
+        </div>
       </div>
-    </div>
-    <div v-if="!isCanvas" class="grid">
-      <header>
-        <h1>{{ name ? name : 'Your Scrape Life in a Book' }}</h1>
-      </header>
+      <div v-if="!isCanvas" class="grid">
+        <header>
+          <h1>{{ name ? name : 'Your Scrape Life in a Book' }}</h1>
+        </header>
 
-      <template v-for="(image, index) in images">
-        <figure class="fig" :class="`fig--${index + 1}`">
-          <img :src="image.path" :alt="image.caption" />
-        </figure>
-        <p>{{ image.caption }}</p>
-      </template>
-      <!-- <p>We played in my parent's house and they love him so much.</p> -->
-      <!-- <p>We had a great walk in park. Obviously, he had to prepare.</p> -->
-      <!-- <p>We watched a horror movie together.</p> -->
+        <template v-for="(image, index) in images">
+          <figure class="fig" :class="`fig--${index + 1}`">
+            <img :src="image.path" :alt="image.caption" />
+          </figure>
+          <p>{{ image.caption }}</p>
+        </template>
+        <!-- <p>We played in my parent's house and they love him so much.</p> -->
+        <!-- <p>We had a great walk in park. Obviously, he had to prepare.</p> -->
+        <!-- <p>We watched a horror movie together.</p> -->
+      </div>
+      <div id="canvasContainer"></div>
     </div>
-    <div id="canvasContainer"></div>
+    <div v-if="isGoHomeButtonVisible" style="margin-top: 20px">
+      <button class="btn btn-action" @click="makeAnotherOne()">Go Home</button>
+    </div>
   </div>
 </template>
 
@@ -57,6 +62,7 @@ export default {
     return {
       isCanvas: false,
       isReady: false,
+      isGoHomeButtonVisible: false,
       generatedCanvas: null,
     }
   },
@@ -93,6 +99,7 @@ export default {
 
         // show the ready dialog
         this.isReady = true
+        this.isGoHomeButtonVisible = true
       } catch (error) {
         // console.log(error)
         alert('Oops! Something went wrong!')
