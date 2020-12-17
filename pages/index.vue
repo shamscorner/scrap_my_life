@@ -13,6 +13,7 @@
         popup-text="Preserve your precious memories in a very beautiful scrapbook, and share it with your close people around you"
         drop-text="Drop here to upload"
         accept="image/jpeg,image/png,image/jpg"
+        :max-image="3"
         edit-upload="myIdEdit"
         @upload-success="uploadImageSuccess"
         @before-remove="beforeRemove"
