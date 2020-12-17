@@ -1,11 +1,109 @@
 <template>
   <div>
-    <input type="file" name="moments[]" multiple />
+    <h1 class="main-title">Scrap My Life</h1>
+    <div
+      id="my-strictly-unique-vue-upload-multiple-image"
+      style="display: flex; justify-content: center"
+    >
+      <vue-upload-multiple-image
+        id-upload="myIdUpload"
+        dragText="Drag, or"
+        browseText="Upload"
+        primaryText="ScrapMyLife"
+        popupText="Preserve your precious memories in a very beautiful scrapbook, and share it with your close people around you"
+        dropText="Drop here to upload"
+        accept="image/jpeg,image/png,image/jpg"
+        :data-images="images"
+        edit-upload="myIdEdit"
+        @upload-success="uploadImageSuccess"
+        @before-remove="beforeRemove"
+        @edit-image="editImage"
+      ></vue-upload-multiple-image>
+    </div>
   </div>
 </template>
 
 <script>
+import VueUploadMultipleImage from 'vue-upload-multiple-image'
+
 export default {
   name: 'Home',
+
+  components: {
+    VueUploadMultipleImage,
+  },
+
+  data() {
+    return {
+      images: [],
+    }
+  },
+
+  methods: {
+    uploadImageSuccess(formData, index, fileList) {
+      console.log('data', formData, index, fileList)
+      this.images = fileList
+      // Upload image api
+      // axios.post('http://your-url-upload', formData).then(response => {
+      //   console.log(response)
+      // })
+    },
+
+    beforeRemove(index, done, fileList) {
+      console.log('index', index, fileList)
+      const r = confirm('remove image')
+      if (r === true) {
+        done()
+      } else {
+      }
+    },
+
+    editImage(formData, index, fileList) {
+      console.log('edit data', formData, index, fileList)
+    },
+  },
 }
 </script>
+
+<style>
+.main-title {
+  font-size: 52px;
+  text-align: center;
+  color: rgb(236, 72, 153);
+}
+#my-strictly-unique-vue-upload-multiple-image {
+  font-family: 'Schoolbell', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+#my-strictly-unique-vue-upload-multiple-image h1,
+h2 {
+  font-weight: normal;
+}
+
+#my-strictly-unique-vue-upload-multiple-image ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#my-strictly-unique-vue-upload-multiple-image li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+#my-strictly-unique-vue-upload-multiple-image a {
+  color: #42b983;
+}
+
+#my-strictly-unique-vue-upload-multiple-image .image-container {
+  width: 300px;
+  height: 200px;
+}
+#my-strictly-unique-vue-upload-multiple-image .show-img {
+  max-width: 280px;
+  max-height: 200px;
+}
+</style>
