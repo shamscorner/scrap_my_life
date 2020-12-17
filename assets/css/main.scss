@@ -55,6 +55,20 @@ p {
   text-align: center;
 }
 
+.btn-submit {
+  display: block;
+  padding: 10px 15px;
+  background: #42b983;
+  border: none;
+  color: white;
+  font-size: 18px;
+  min-width: 100px;
+
+  &:hover {
+    background: #30a16e;
+  }
+}
+
 img {
   object-fit: cover;
   width: 100%;

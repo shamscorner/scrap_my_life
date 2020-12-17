@@ -20,6 +20,10 @@
       ></vue-upload-multiple-image>
     </div>
     <p class="text-sm">You can upload maximum three images for now</p>
+
+    <button class="btn-submit" style="margin-left: auto; margin-right: auto">
+      Next
+    </button>
   </div>
 </template>
 

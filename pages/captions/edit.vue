@@ -53,18 +53,6 @@ export default {
       padding: 8px 10px;
       font-size: 18px;
     }
-
-    .btn-submit {
-      padding: 10px 15px;
-      background: #42b983;
-      border: none;
-      color: white;
-      font-size: 18px;
-
-      &:hover {
-        background: #30a16e;
-      }
-    }
   }
 }
 </style>
