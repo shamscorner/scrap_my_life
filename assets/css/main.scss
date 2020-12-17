@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Schoolbell&display=swap');
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
@@ -12,12 +15,13 @@ body {
 }
 
 #scrapbook {
+  min-width: 1280px;
   background-image: url('../images/pattern5.jpg');
 }
 
 h1 {
   margin: 0;
-  font-size: 3.8rem;
+  font-size: 2.8rem;
 }
 
 figure {
