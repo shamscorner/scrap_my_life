@@ -18,7 +18,11 @@
         >
           Make another one
         </button>
-        <button class="btn btn-submit" style="display: inline-block">
+        <button
+          class="btn btn-submit"
+          style="display: inline-block"
+          @click="downloadCanvas"
+        >
           Download
         </button>
       </div>
@@ -53,6 +57,7 @@ export default {
     return {
       isCanvas: false,
       isReady: false,
+      generatedCanvas: null,
     }
   },
 
@@ -73,6 +78,7 @@ export default {
           document.querySelector('#scrapbook'),
           { width: 1200 }
         )
+        this.generatedCanvas = generatedCanvas
         // show the canvas
         this.isCanvas = true
         // put the canvas
@@ -84,6 +90,32 @@ export default {
         // console.log(error)
         alert('Oops! Something went wrong!')
       }
+    },
+
+    downloadCanvas() {
+      // check for empty canvas
+      if (!this.generatedCanvas) {
+        alert('Oops! Something went wrong!')
+        return
+      }
+
+      // create image
+      const img = new Image()
+      img.setAttribute('crossOrigin', 'anonymous')
+      img.src = this.name + '.jpg'
+
+      const ctx = this.generatedCanvas.getContext('2d')
+      ctx.drawImage(img, 0, 0)
+
+      const dataURL = this.generatedCanvas.toDataURL('image/jpg')
+
+      // download
+      const downloadLink = document.createElement('a')
+      downloadLink.href = dataURL
+      downloadLink.download = img.src
+      document.body.appendChild(downloadLink)
+      downloadLink.click()
+      document.body.removeChild(downloadLink)
     },
 
     makeAnotherOne() {
