@@ -25,6 +25,7 @@
 
 <script>
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Home',
@@ -34,8 +35,14 @@ export default {
   },
 
   methods: {
+    ...mapActions(['updateImages']),
+
     uploadImageSuccess(formData, index, fileList) {
       console.log('data', formData, index, fileList)
+
+      // update images to store
+      this.$store.dispatch('updateImages', fileList)
+
       // Upload image api
       // axios.post('http://your-url-upload', formData).then(response => {
       //   console.log(response)
