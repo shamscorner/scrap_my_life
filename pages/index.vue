@@ -20,6 +20,7 @@
         @edit-image="editImage"
       ></vue-upload-multiple-image>
     </div>
+    <p class="text-sm">You can upload maximum three images for now</p>
   </div>
 </template>
 
