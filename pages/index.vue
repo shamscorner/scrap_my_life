@@ -7,13 +7,12 @@
     >
       <vue-upload-multiple-image
         id-upload="myIdUpload"
-        dragText="Drag, or"
-        browseText="Upload"
-        primaryText="ScrapMyLife"
-        popupText="Preserve your precious memories in a very beautiful scrapbook, and share it with your close people around you"
-        dropText="Drop here to upload"
+        drag-text="Drag, or"
+        browse-text="Upload"
+        primary-text="ScrapMyLife"
+        popup-text="Preserve your precious memories in a very beautiful scrapbook, and share it with your close people around you"
+        drop-text="Drop here to upload"
         accept="image/jpeg,image/png,image/jpg"
-        :data-images="images"
         edit-upload="myIdEdit"
         @upload-success="uploadImageSuccess"
         @before-remove="beforeRemove"
@@ -34,16 +33,9 @@ export default {
     VueUploadMultipleImage,
   },
 
-  data() {
-    return {
-      images: [],
-    }
-  },
-
   methods: {
     uploadImageSuccess(formData, index, fileList) {
       console.log('data', formData, index, fileList)
-      this.images = fileList
       // Upload image api
       // axios.post('http://your-url-upload', formData).then(response => {
       //   console.log(response)
