@@ -1,5 +1,5 @@
 <template>
-  <div id="scrapbook">
+  <div id="scrapbook" :style="`background-image: url(${backgroundImageUrl})`">
     <div v-if="isReady" class="dialog">
       <div class="ready-dialog">
         <h1 style="margin-bottom: 20px">Your scrapbook is ready :)</h1>
@@ -63,6 +63,13 @@ export default {
 
   computed: {
     ...mapState(['name', 'images']),
+
+    backgroundImageUrl() {
+      return require(`~/assets/images/pattern${this.getRandomIntInclusive(
+        1,
+        6
+      )}.jpg`)
+    },
   },
 
   mounted() {
@@ -113,6 +120,12 @@ export default {
 
     makeAnotherOne() {
       this.$router.push({ name: 'index' })
+    },
+
+    getRandomIntInclusive(min, max) {
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return Math.floor(Math.random() * (max - min + 1) + min)
     },
   },
 }
