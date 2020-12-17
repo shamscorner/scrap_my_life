@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="main-title">Scrap My Life</h1>
+    <header-title></header-title>
     <div
       id="my-strictly-unique-vue-upload-multiple-image"
       style="display: flex; justify-content: center"

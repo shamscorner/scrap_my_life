@@ -41,12 +41,6 @@ p {
   border: 1px solid rgba(229, 231, 235);
 }
 
-.main-title {
-  font-size: 52px;
-  text-align: center;
-  color: rgb(236, 72, 153);
-}
-
 .text-sm {
   font-size: 15px;
   background: none;
@@ -158,7 +152,7 @@ header {
   grid-row: header;
   padding: 2rem;
   // box-shadow: -0.035rem 0.03rem 0.3rem rgba(0, 0, 0, 0.2);
-  // z-index: 1;
+  z-index: 1;
   text-align: center;
   background-color: aliceBlue;
   border: 1px solid rgba(229, 231, 235);

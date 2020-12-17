@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="main-title">Scrap My Life</h1>
+    <header-title></header-title>
     <form class="edit-caption-form" @submit.prevent="submit">
       <div class="wrapper">
         <p

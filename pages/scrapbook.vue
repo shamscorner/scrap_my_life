@@ -99,20 +99,13 @@ export default {
         return
       }
 
-      // create image
-      const img = new Image()
-      img.setAttribute('crossOrigin', 'anonymous')
-      img.src = this.name + '.jpg'
-
-      const ctx = this.generatedCanvas.getContext('2d')
-      ctx.drawImage(img, 0, 0)
-
+      // get the data url
       const dataURL = this.generatedCanvas.toDataURL('image/jpg')
 
       // download
       const downloadLink = document.createElement('a')
       downloadLink.href = dataURL
-      downloadLink.download = img.src
+      downloadLink.download = this.name + '.jpg'
       document.body.appendChild(downloadLink)
       downloadLink.click()
       document.body.removeChild(downloadLink)
