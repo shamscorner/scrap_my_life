@@ -113,16 +113,30 @@ export default {
         return
       }
 
-      // get the data url
-      const dataURL = this.generatedCanvas.toDataURL('image/jpg')
+      // // get the data url
+      // const dataURL = this.generatedCanvas.toDataURL('image/jpg')
+      // console.log(dataURL)
 
-      // download
-      const downloadLink = document.createElement('a')
-      downloadLink.href = dataURL
-      downloadLink.download = this.name + '.jpg'
-      document.body.appendChild(downloadLink)
-      downloadLink.click()
-      document.body.removeChild(downloadLink)
+      // // download
+      // const downloadLink = document.createElement('a')
+      // downloadLink.href = dataURL
+      // downloadLink.download = this.name + '.jpg'
+      // document.body.appendChild(downloadLink)
+      // downloadLink.click()
+      // document.body.removeChild(downloadLink)
+
+      // ! new way
+      this.generatedCanvas.toBlob(
+        (blob) => {
+          const anchor = document.createElement('a')
+          anchor.download = this.name + '.jpg'
+          anchor.href = URL.createObjectURL(blob)
+          anchor.click()
+          URL.revokeObjectURL(anchor.href)
+        },
+        'image/jpeg',
+        0.9
+      )
     },
 
     makeAnotherOne() {
